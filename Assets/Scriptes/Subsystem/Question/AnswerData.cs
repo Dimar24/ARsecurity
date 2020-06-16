@@ -2,12 +2,12 @@
 {
     public struct AnswerData
     {
-        public readonly string AnswerText;
+        public readonly string Text;
         public readonly bool IsCorrect;
 
-        public AnswerData(string answerText, bool isCorrect = false)
+        public AnswerData(string text, bool isCorrect = false)
         {
-            AnswerText = answerText;
+            Text = text;
             IsCorrect = isCorrect;
         }
     }

@@ -1,39 +1,30 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
-using System.Xml;
-using Lazy.Generic;
-using UnityEngine;
 
 namespace Subsystem.Question
 {
     public static class QuestionManager
     {
-        private static readonly string LocalizationPath = Path.Combine("Localization", "ru");
-
+        private static readonly string LocalizationPath = Path.Combine("Localization", "ru", "Questions");
         private static readonly QuestionController _controller = new QuestionController();
 
-        public static void LoadQuestions(Action complete = null)
+        public static void LoadQuestionsAsync(Action complete = null)
         {
-            new LazyCoroutine(Load).OnComplete(() => complete?.Invoke()).Run();
+            new QuestionLoader(LocalizationPath)
+                .LoadAsync(result =>
+            {
+                OnLoaded(result);
+                complete?.Invoke();
+            });
         }
 
-        private static IEnumerator Load()
+        public static QuestionData? GetQuestion(int id) => _controller.GetQuestion(id);
+        
+        private static void OnLoaded(List<QuestionLoadedData> data)
         {
-            var asyncOperation = Resources.LoadAsync(LocalizationPath);
-
-            while (!asyncOperation.isDone)
-                yield return null;
-
-            var file = (TextAsset)asyncOperation.asset;
-            var stringReader = new StringReader(file.text);
-            var xmlReader = new XmlTextReader(stringReader);
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(xmlReader);
-            foreach (XmlNode node in xmlDoc.FirstChild)
-            {
-                Debug.Log(node.Attributes.Count);
-            }
+            foreach (var d in data)
+                _controller.AddQuestion(d.Id, d.Data);
         }
     }
 }

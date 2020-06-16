@@ -13,6 +13,18 @@ public class AnswerButtonView : MonoBehaviour
     
     [SerializeField] private Image _numberImage;
     [SerializeField] private Image _answerImage;
+
+    public string NumberText
+    {
+        get => _numberText.text;
+        set => _numberText.text = value;
+    }
+
+    public string AnswerText
+    {
+        get => _answerText.text;
+        set => _answerText.text = value;
+    }
     
     public event Action Clicked;
     
