@@ -8,15 +8,15 @@ namespace Lazy
     public static class LazySequenceExtensions
     {
         public static LazySequence Join(this LazySequence target, Action action) 
-            => target.Join(LazyAction.New(action));
+            => target.Join(new LazyAction(action));
 
         public static LazySequence Append(this LazySequence target, Action action) 
-            => target.Append(LazyAction.New(action));
+            => target.Append(new LazyAction(action));
 
         public static LazySequence Join(this LazySequence target, Action<Action> action)
-            => target.Join(LazyCallback.New(action));
+            => target.Join(new LazyCallback(action));
 
         public static LazySequence Append(this LazySequence target, Action<Action> action) 
-            => target.Append(LazyCallback.New(action));
+            => target.Append(new LazyCallback(action));
     }
 }
