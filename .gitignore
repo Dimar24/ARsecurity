@@ -2,3 +2,7 @@
 ARsecurity.sln
 Temp
 *.csproj
+.idea
+obj
+QCAR
+*.DotSettings

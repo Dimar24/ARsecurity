@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Subsystem.Question;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -8,6 +9,7 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        QuestionManager.LoadQuestionsAsync();
         _startButton.onClick.AddListener(OnStartButtonClicked);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
     }
