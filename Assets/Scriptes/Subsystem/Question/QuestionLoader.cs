@@ -28,6 +28,7 @@ namespace Subsystem.Question
 
         private IEnumerator LoadRoutine(Action<List<QuestionLoadedData>> complete)
         {
+            
             var asyncOperation = Resources.LoadAsync(_path);
 
             while (!asyncOperation.isDone)
