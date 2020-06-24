@@ -9,11 +9,11 @@ public class AnswerButtonView : MonoBehaviour
     [SerializeField] private Text _answerText;
     private Button _button;
     
-    [SerializeField] private Image _answerFrameImage;
+    [SerializeField] private GameObject _answerFrameImage;
     
     [SerializeField] private Image _numberImage;
     [SerializeField] private Image _answerImage;
-
+    
     public string NumberText
     {
         get => _numberText.text;
@@ -25,7 +25,7 @@ public class AnswerButtonView : MonoBehaviour
         get => _answerText.text;
         set => _answerText.text = value;
     }
-    
+
     public event Action Clicked;
     
     private void Awake()
@@ -41,7 +41,7 @@ public class AnswerButtonView : MonoBehaviour
 
     public void SetFrame(bool enabled)
     {
-        _answerFrameImage.enabled = enabled;
+        _answerFrameImage.SetActive(enabled);
     }
 
     public void SetColor(Color numberColor, Color answerColor)

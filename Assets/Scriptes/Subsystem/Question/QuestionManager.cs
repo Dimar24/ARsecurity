@@ -9,6 +9,7 @@ namespace Subsystem.Question
         private static readonly string LocalizationPath = Path.Combine("Localization", "ru", "Questions");
         private static readonly QuestionController _controller = new QuestionController();
 
+        public static int Count => _controller.Count;
         public static void LoadQuestionsAsync(Action complete = null)
         {
             new QuestionLoader(LocalizationPath)

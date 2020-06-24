@@ -5,6 +5,7 @@ namespace Subsystem.Question
    public class QuestionController
    {
       private readonly Dictionary<int, QuestionData> _questions = new Dictionary<int, QuestionData>();
+      public int Count => _questions.Count;
 
       public QuestionData? GetQuestion(int id)
       {

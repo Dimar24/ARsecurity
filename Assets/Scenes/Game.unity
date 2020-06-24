@@ -340,7 +340,7 @@ RectTransform:
   m_Children:
   - {fileID: 1330714254}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -484,7 +484,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &681286058
 GameObject:
@@ -1433,11 +1433,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIQuestion
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395095050430267699, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7872d81af5cedbd4aa1ca848cddb5ab6, type: 3}
