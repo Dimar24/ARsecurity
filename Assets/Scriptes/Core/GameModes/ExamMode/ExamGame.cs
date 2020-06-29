@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Subsystem.Question;
+using UnityEngine;
 
 namespace Core.GameModes.ExamMode
 {
@@ -35,7 +36,8 @@ namespace Core.GameModes.ExamMode
         {
             if (!_states.ContainsKey(id))
                 return;
-            
+
+            _currentId = id;
             _states[id].OnObjectFocus();
             base.OnObjectFocus(id);
 
@@ -45,11 +47,23 @@ namespace Core.GameModes.ExamMode
         {
             if (!_states.ContainsKey(id))
                 return;
-            
+
+            _currentId = null;
             _states[id].OnObjectDefocus();
             base.OnObjectDefocus(id);
         }
 
+        public void QuestionResolve(bool isCorrect)
+        {
+            if (_currentId == null)
+            {
+                Debug.LogError(
+                    $"{nameof(ExamGame)}.{nameof(QuestionResolve)} must be invoke, when a question active!");
+                return;
+            }
+            _states[_currentId.Value].QuestionResolve();
+        }
+        
         private void OnNeedShowQuestion(int id)
         {
             NeedShowQuestion?.Invoke(_questions[id]);

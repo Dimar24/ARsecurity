@@ -102,6 +102,7 @@ public class GameMenu : MonoBehaviour
         
         _isClicked = true;
         _buttons[id].SetFrame(true);
+        _game.QuestionResolve(_questionData.Answers[id].IsCorrect);
         for (var i = 0; i < _buttons.Length; ++i)
         {
             var button = _buttons[i];
