@@ -1,10 +1,12 @@
-﻿using UI.View;
-using UnityEditor;
+﻿using UnityEditor;
 
-[CustomEditor(typeof(TouchArea))]
-public class TouchAreaEditor : Editor
+namespace UI.View.Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TouchArea))]
+    public class TouchAreaEditor : UnityEditor.Editor
     {
+        public override void OnInspectorGUI()
+        {
+        }
     }
 }
