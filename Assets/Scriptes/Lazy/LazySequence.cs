@@ -1,11 +1,22 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Lazy
 {
     public sealed class LazySequence : BaseLazy
     {
+        private const string ModifyAfterStartLog = "Do not modify the container after starting it!";
+        
         private readonly List<Queue<BaseLazy>> _list = new List<Queue<BaseLazy>>();
+        
+        private bool _isRun;
         private int _pointer;
+        private int _stepPointer;
+
+        public LazySequence()
+        {
+            Started += () => _isRun = true;
+        }
         
         /// <summary>
         /// Добавляет контейнер асинхронно.
@@ -14,6 +25,12 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Join(BaseLazy container)
         {
+            if (_isRun)
+            {
+                Debug.LogWarning(ModifyAfterStartLog);
+                return this;
+            }
+            
             if (_list.Count <= 0)
                 _list.Add(new Queue<BaseLazy>());
             
@@ -28,6 +45,12 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Append(BaseLazy container)
         {
+            if (_isRun)
+            {
+                Debug.LogWarning(ModifyAfterStartLog);
+                return this;
+            }
+            
             _list.Add(new Queue<BaseLazy>());
             _list[_list.Count - 1].Enqueue(container);
             return this;
@@ -39,17 +62,18 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Append()
         {
+            if (_isRun)
+            {
+                Debug.LogWarning(ModifyAfterStartLog);
+                return this;
+            }
+            
             if (_list.Count <= 0 || _list[_list.Count - 1].Count > 0)
                 _list.Add(new Queue<BaseLazy>());
             
             return this;
         }
 
-        public void Break()
-        {
-            _pointer = _list.Count;
-        }
-        
         protected override void Execute()
         {
             if (_list.Count <= _pointer)
@@ -61,19 +85,17 @@ namespace Lazy
             
             var queue = _list[_pointer];
             ++_pointer;
-            
-            var count = queue.Count;
-            var pointer = 0;
+            _stepPointer = 0;
 
-            void TryComplete()
-            {
-                ++pointer;
-                if (pointer >= count)
-                    Execute();
-            }
-            
             foreach (var container in queue)
                 container.OnComplete(TryComplete).Run();
+        }
+        
+         private void TryComplete()
+        {
+            ++_stepPointer;
+            if (_stepPointer >= _list[_pointer - 1].Count)
+                Execute();
         }
     }
 }

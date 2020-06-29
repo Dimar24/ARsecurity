@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _modeMenu;
+    [SerializeField] private GameObject _gameMenu;
     [SerializeField] private GameObject _exitPopup;
 
     private static MenuManager Instance { get; set; }
@@ -14,6 +15,8 @@ public class MenuManager : MonoBehaviour
     public static GameObject MainMenu => Instance._mainMenu;
 
     public static GameObject ModeMenu => Instance._modeMenu;
+    
+    public static GameObject GameMenu => Instance._gameMenu;
     
     public static GameObject ExitPopup  => Instance._exitPopup;
 

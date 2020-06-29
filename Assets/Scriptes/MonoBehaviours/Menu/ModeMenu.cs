@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Core;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ModeMenu : MonoBehaviour
@@ -17,7 +15,11 @@ public class ModeMenu : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        GameManager.Load(new SessionOptions(GameModeType.Exam), () =>
+        {
+            MenuManager.ModeMenu.SetActive(false);
+            MenuManager.GameMenu.SetActive(true);
+        });
     }
     
     private void OnBackButtonClicked()

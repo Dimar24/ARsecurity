@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        QuestionManager.LoadQuestionsAsync();
         _startButton.onClick.AddListener(OnStartButtonClicked);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
     }
