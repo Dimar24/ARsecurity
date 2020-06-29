@@ -2,29 +2,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ModeMenu : MonoBehaviour
+namespace UI.Menu
 {
-    [SerializeField] private Button _playButton;
-    [SerializeField] private Button _backButton;
-
-    private void Awake()
+    public class ModeMenu : BaseMenu
     {
-        _playButton.onClick.AddListener(OnPlayButtonClicked);
-        _backButton.onClick.AddListener(OnBackButtonClicked);
-    }
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _backButton;
 
-    private void OnPlayButtonClicked()
-    {
-        GameManager.Load(new SessionOptions(GameModeType.Exam), () =>
+        protected override void OnCreate()
         {
-            MenuManager.ModeMenu.SetActive(false);
-            MenuManager.GameMenu.SetActive(true);
-        });
-    }
+            _playButton.onClick.AddListener(OnPlayButtonClicked);
+            _backButton.onClick.AddListener(OnBackButtonClicked);
+            base.OnCreate();
+        }
+
+        private void OnPlayButtonClicked()
+        {
+            GameManager.Load(new SessionOptions(GameModeType.Exam), () =>
+            {
+                MenuManager.Open<ExamGameMenu>();
+            });
+        }
     
-    private void OnBackButtonClicked()
-    {
-        MenuManager.ModeMenu.SetActive(false);
-        MenuManager.MainMenu.SetActive(true);
+        private void OnBackButtonClicked()
+        {
+            MenuManager.Open<MainMenu>();
+        }
     }
 }

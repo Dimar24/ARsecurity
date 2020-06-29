@@ -1,32 +1,35 @@
-﻿using Subsystem.Question;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ExitPopup : MonoBehaviour
+namespace UI.Menu
 {
-    [SerializeField] private Button _okButton;
-    [SerializeField] private Button _cancelButton;
-    [SerializeField] private InputField _passwordInputField;
-    [SerializeField] private string _password = "123";
-
-    private void Awake()
+    public class ExitPopup : BaseMenu
     {
-        _okButton.onClick.AddListener(OnOkButtonClicked);
-        _cancelButton.onClick.AddListener(OnCancelButtonClicked);
-    }
+        [SerializeField] private Button _okButton;
+        [SerializeField] private Button _cancelButton;
+        [SerializeField] private InputField _passwordInputField;
+        [SerializeField] private string _password = "123";
 
-    private void OnOkButtonClicked()
-    {
-        if (_passwordInputField.text == _password)
+        protected override void OnCreate()
         {
-            Debug.Log("Goodbye");
-            //Application.Quit();
+            _okButton.onClick.AddListener(OnOkButtonClicked);
+            _cancelButton.onClick.AddListener(OnCancelButtonClicked);
+            base.OnCreate();
         }
-        _passwordInputField.text = "";
-    }
 
-    private void OnCancelButtonClicked()
-    {
-        MenuManager.ExitPopup.SetActive(false);
+        private void OnOkButtonClicked()
+        {
+            if (_passwordInputField.text == _password)
+            {
+                Debug.Log("Goodbye");
+                //Application.Quit();
+            }
+            _passwordInputField.text = "";
+        }
+
+        private void OnCancelButtonClicked()
+        {
+            MenuManager.Open<MainMenu>();
+        }
     }
 }

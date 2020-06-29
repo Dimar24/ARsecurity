@@ -17,6 +17,11 @@ namespace Core.GameModes.ExamMode
 
         private int? _currentId;
 
+        public int QuestionsCount => _questions.Count;
+        public int AnswersCount { get; private set; }
+        public int CorrectAnswersCount { get; private set; }
+        public int IncorrectAnswersCount => AnswersCount - CorrectAnswersCount;
+        
         public ExamGame(ExamGameOptions options) : base(options)
         {
             _questions = options.Questions;
@@ -61,6 +66,11 @@ namespace Core.GameModes.ExamMode
                     $"{nameof(ExamGame)}.{nameof(QuestionResolve)} must be invoke, when a question active!");
                 return;
             }
+
+            ++AnswersCount;
+            if (isCorrect)
+                ++CorrectAnswersCount;
+            
             _states[_currentId.Value].QuestionResolve();
         }
         
@@ -78,6 +88,7 @@ namespace Core.GameModes.ExamMode
         {
             NeedShowParticles?.Invoke();
         }
+        
         private void OnNeedHideParticles(int id)
         {
             NeedHideParticles?.Invoke();

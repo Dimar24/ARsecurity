@@ -1,33 +1,32 @@
-﻿using Subsystem.Question;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+namespace UI.Menu
 {
-    [SerializeField] private Button _startButton;
-    [SerializeField] private Button _exitButton;
-    [SerializeField] private int _number = 10;
-    [SerializeField] private float _durationReset = 1.0f;
+    public class MainMenu : BaseMenu
+    {
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Button _exitButton;
+        [SerializeField] private int _number = 10;
+        [SerializeField] private float _durationReset = 1.0f;
     
-    private int _count;
-    private float _lastClicked;
+        private int _count;
+        private float _lastClicked;
 
-    private void Awake()
-    {
-        _startButton.onClick.AddListener(OnStartButtonClicked);
-        _exitButton.onClick.AddListener(OnExitButtonClicked);
-    }
+        protected override void OnCreate()
+        {
+            _startButton.onClick.AddListener(OnStartButtonClicked);
+            _exitButton.onClick.AddListener(OnExitButtonClicked);
+            base.OnCreate();
+        }
 
-    private void OnStartButtonClicked()
-    {
-        _count = 0;
-        MenuManager.MainMenu.SetActive(false);
-        MenuManager.ModeMenu.SetActive(true);
-    }
+        private void OnStartButtonClicked()
+        {
+            _count = 0;
+            MenuManager.Open<ModeMenu>();
+        }
     
-    private void OnExitButtonClicked()
-    {
-        if (!MenuManager.ExitPopup.activeSelf)
+        private void OnExitButtonClicked()
         {
             if (Time.time - _lastClicked > _durationReset)
                 _count = 0;
@@ -35,9 +34,9 @@ public class MainMenu : MonoBehaviour
             if (_count == _number)
             {
                 _count = 0;
-                MenuManager.ExitPopup.SetActive(true);
+                MenuManager.Open<ExitPopup>();
             }
             _lastClicked = Time.time;   
-        }
+    }
     }
 }

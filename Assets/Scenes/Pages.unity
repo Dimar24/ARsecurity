@@ -121,23 +121,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &80181170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1996084210215505618, guid: 48e1cfe0e5cab834bbd6ada4de84b970,
-    type: 3}
-  m_PrefabInstance: {fileID: 1996084210278742368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &80181171 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1996084210215505619, guid: 48e1cfe0e5cab834bbd6ada4de84b970,
     type: 3}
   m_PrefabInstance: {fileID: 1996084210278742368}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &190551578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8387210678457457483, guid: e22fd14fcbb67e24dac158f3980fe6d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1299426004}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &190551579 stripped
 RectTransform:
@@ -240,10 +228,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f80200a33c37a4cbe3be81dc6ebc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenu: {fileID: 1611626693}
-  _modeMenu: {fileID: 80181170}
-  _gameMenu: {fileID: 2395095051624535999}
-  _exitPopup: {fileID: 190551578}
+  _menus:
+  - {fileID: 492248141593766640}
+  - {fileID: 1996084210278742369}
+  - {fileID: 2395095051624535999}
+  - {fileID: 1299426005}
 --- !u!4 &631481504
 Transform:
   m_ObjectHideFlags: 0
@@ -377,17 +366,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22fd14fcbb67e24dac158f3980fe6d3, type: 3}
+--- !u!114 &1299426005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 427809228587278320, guid: e22fd14fcbb67e24dac158f3980fe6d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1299426004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179f5f377cbd1164cb24f77cb49ebe14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1330714254 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2395095050430267696, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
     type: 3}
   m_PrefabInstance: {fileID: 2395095051624535998}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1611626693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 492248142130287146, guid: d6bbf0b2f7445134180be3e58a45929d,
-    type: 3}
-  m_PrefabInstance: {fileID: 492248141593766639}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1611626694 stripped
 RectTransform:
@@ -621,6 +616,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6bbf0b2f7445134180be3e58a45929d, type: 3}
+--- !u!114 &492248141593766640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 492248142130287144, guid: d6bbf0b2f7445134180be3e58a45929d,
+    type: 3}
+  m_PrefabInstance: {fileID: 492248141593766639}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56619b0ab3784984190ba51a58a1b21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1996084210278742368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,6 +747,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e1cfe0e5cab834bbd6ada4de84b970, type: 3}
+--- !u!114 &1996084210278742369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1996084210215505620, guid: 48e1cfe0e5cab834bbd6ada4de84b970,
+    type: 3}
+  m_PrefabInstance: {fileID: 1996084210278742368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4f75b65ac993440a925d3b2376e1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2395095051624535998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -855,7 +874,7 @@ PrefabInstance:
     - target: {fileID: 2395095050430267699, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
         type: 3}
       propertyPath: m_Name
-      value: UIQuestion
+      value: ExamGameMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2395095050430267699, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
         type: 3}
@@ -864,9 +883,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7872d81af5cedbd4aa1ca848cddb5ab6, type: 3}
---- !u!1 &2395095051624535999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2395095050430267699, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
+--- !u!114 &2395095051624535999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 709795417876628565, guid: 7872d81af5cedbd4aa1ca848cddb5ab6,
     type: 3}
   m_PrefabInstance: {fileID: 2395095051624535998}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0186137dec00fac4aa13b68e1610b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

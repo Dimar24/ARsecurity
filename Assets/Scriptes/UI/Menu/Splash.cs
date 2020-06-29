@@ -3,6 +3,7 @@ using System.Linq;
 using Lazy;
 using Lazy.Generic;
 using Subsystem.Question;
+using UI.Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,7 @@ public class Splash : MonoBehaviour
                 .Join(LoadSceneLazy(id));
         
         loadPipeline
+            .Append(() => MenuManager.Open<MainMenu>())
             .Join(LoadQuestionsLazy())
             .Append(UnLoadSplashLazy())
             .Run();
