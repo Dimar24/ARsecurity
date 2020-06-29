@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core.GameModes;
 using Core.GameModes.ExamMode;
 using Core.GameModes.TourMode;
+using Core.Vuforia;
 using Lazy.Generic;
 using Subsystem.Question;
 using UnityEngine;
