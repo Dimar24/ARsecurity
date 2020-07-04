@@ -47,7 +47,7 @@ namespace Pattern
                     return;
                 }
                 _instance = value;
-                if (Application.isPlaying)
+                if (Application.isPlaying && value != null)
                     DontDestroyOnLoad(value);
             }
         }

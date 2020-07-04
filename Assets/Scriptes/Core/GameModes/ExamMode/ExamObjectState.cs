@@ -8,20 +8,15 @@ namespace Core.GameModes.ExamMode
     public class ExamObjectState
     {
         public event Action NeedShowQuestion;
-        public event Action NeedShowParticles;
-
         public event Action NeedHideQuestion;
-        public event Action NeedHideParticles;
+        
         
         private bool _isNeedShowQuestion;
-        private bool _isParticlesShowed;
         private bool _isQuestionShowed;
         
         private Coroutine _showCoroutine;
         private Coroutine _hideCoroutine;
-        private Coroutine _resolveCoroutine;
 
-        // ToDo Add Action Queue
         public ExamObjectState(bool needShowQuestion)
         {
             _isNeedShowQuestion = needShowQuestion;
@@ -56,7 +51,7 @@ namespace Core.GameModes.ExamMode
 
         public void QuestionResolve()
         {
-            _resolveCoroutine = StartCoroutine(QuestionResolveRoutine(() => _resolveCoroutine = null));
+            StartCoroutine(QuestionResolveRoutine());
         }
 
         private IEnumerator QuestionResolveRoutine(Action complete = null)
@@ -73,12 +68,6 @@ namespace Core.GameModes.ExamMode
         
         private IEnumerator ShowObjectRoutine(Action complete = null)
         {
-            if (!_isParticlesShowed)
-            {
-                NeedShowParticles?.Invoke();
-                _isParticlesShowed = true;
-            }
-
             if (!_isNeedShowQuestion)
                 yield break;
             
@@ -95,12 +84,6 @@ namespace Core.GameModes.ExamMode
         
         private IEnumerator HideObjectRoutine(Action complete = null)
         {
-            if (_isParticlesShowed)
-            {
-                NeedHideParticles?.Invoke();
-                _isParticlesShowed = false;
-            }
-
             yield return new WaitForSeconds(3f);
             
             if (_isQuestionShowed)

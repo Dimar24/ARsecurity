@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace UI.View.Editor
+namespace UI.Menu.Editor
 {
     [CustomEditor(typeof(TouchArea))]
     public class TouchAreaEditor : UnityEditor.Editor

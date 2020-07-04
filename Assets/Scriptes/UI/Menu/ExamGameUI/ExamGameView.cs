@@ -1,15 +1,15 @@
-﻿using System;
-using Core;
+﻿using Core;
 using Core.GameModes.ExamMode;
+using Core.Scenes;
 using DG.Tweening;
 using Subsystem.Question;
 using UI.View.AnswerButton;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Menu
+namespace UI.Menu.ExamGameUI
 {
-    public class ExamGameMenu : BaseMenu
+    public class ExamGameView : View<ExamGameViewOptions>
     {
         [SerializeField] private Text _questionText;
         [SerializeField] private Button _backButton;
@@ -22,13 +22,14 @@ namespace UI.Menu
         [SerializeField] private AnswerButtonOptions _incorrectOptions;
 
         private ExamGame _game;
+        private IGameScene _scene;
+        
         private float _topCloseY;
         private float _bottomCloseY;
 
         private QuestionData _questionData;
         private bool _isClicked;
-    
-    
+        
         protected override void OnCreate()
         {
             _topCloseY = _topPanel.anchoredPosition.y;
@@ -43,20 +44,14 @@ namespace UI.Menu
             base.OnCreate();
         }
 
-        public override void Open(Action complete = null)
+        protected override void OnOpenStart(ExamGameViewOptions options)
         {
-            _game = GameManager.Game as ExamGame;
-            if (_game == null)
-            {
-                Debug.LogError($"Game must be {nameof(ExamGame)}");
-                return;
-            }
-
+            _game = options.Game;
             _game.NeedShowQuestion += OnNeedShowQuestion;
             _game.NeedHideQuestion += OnNeedHideQuestion;
-            _game.NeedShowParticles += OnNeedShowParticles;
-            _game.NeedHideParticles += OnNeedHideParticles;
-            base.Open(complete);
+
+            _scene = options.Scene;
+            base.OnOpenStart();
         }
     
 
@@ -89,17 +84,7 @@ namespace UI.Menu
             _topPanel.DOAnchorPosY(_topCloseY, _stateChangeDuration);
             _bottomPanel.DOAnchorPosY(_bottomCloseY, _stateChangeDuration);
         }
-    
-        private void OnNeedHideParticles()
-        {
-            Debug.Log("OnNeedHideParticles UI");
-        }
 
-        private void OnNeedShowParticles()
-        {
-            Debug.Log("OnNeedShowParticles UI");
-        }
-    
         private void OnButtonClicked(int id)
         {
             if (_isClicked) 
@@ -120,9 +105,9 @@ namespace UI.Menu
     
         private void OnBackButtonClicked()
         {
-            GameManager.Unload(() =>
+            _scene.Unload(() =>
             {
-                MenuManager.Open<ModeMenu>();
+                ViewManager.OpenModeView();
             });
         }
     }

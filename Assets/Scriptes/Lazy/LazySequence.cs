@@ -5,19 +5,11 @@ namespace Lazy
 {
     public sealed class LazySequence : BaseLazy
     {
-        private const string ModifyAfterStartLog = "Do not modify the container after starting it!";
-        
         private readonly List<Queue<BaseLazy>> _list = new List<Queue<BaseLazy>>();
         
-        private bool _isRun;
         private int _pointer;
         private int _stepPointer;
 
-        public LazySequence()
-        {
-            Started += () => _isRun = true;
-        }
-        
         /// <summary>
         /// Добавляет контейнер асинхронно.
         /// </summary>
@@ -25,7 +17,7 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Join(BaseLazy container)
         {
-            if (_isRun)
+            if (IsRun)
             {
                 Debug.LogWarning(ModifyAfterStartLog);
                 return this;
@@ -45,7 +37,7 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Append(BaseLazy container)
         {
-            if (_isRun)
+            if (IsRun)
             {
                 Debug.LogWarning(ModifyAfterStartLog);
                 return this;
@@ -62,7 +54,7 @@ namespace Lazy
         /// <returns>this</returns>
         public LazySequence Append()
         {
-            if (_isRun)
+            if (IsRun)
             {
                 Debug.LogWarning(ModifyAfterStartLog);
                 return this;

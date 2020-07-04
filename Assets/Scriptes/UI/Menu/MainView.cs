@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace UI.Menu
 {
-    public class MainMenu : BaseMenu
+    public sealed class MainView : View
     {
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _exitButton;
@@ -23,7 +23,7 @@ namespace UI.Menu
         private void OnStartButtonClicked()
         {
             _count = 0;
-            MenuManager.Open<ModeMenu>();
+            ViewManager.OpenModeView();
         }
     
         private void OnExitButtonClicked()
@@ -34,7 +34,7 @@ namespace UI.Menu
             if (_count == _number)
             {
                 _count = 0;
-                MenuManager.Open<ExitPopup>();
+                ViewManager.OpenExitView();
             }
             _lastClicked = Time.time;   
     }

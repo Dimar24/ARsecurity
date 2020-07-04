@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace UI.Menu
 {
-    public class ExitPopup : BaseMenu
+    public class ExitView : View
     {
         [SerializeField] private Button _okButton;
         [SerializeField] private Button _cancelButton;
@@ -21,15 +21,14 @@ namespace UI.Menu
         {
             if (_passwordInputField.text == _password)
             {
-                Debug.Log("Goodbye");
-                //Application.Quit();
+                Application.Quit();
             }
             _passwordInputField.text = "";
         }
 
         private void OnCancelButtonClicked()
         {
-            MenuManager.Open<MainMenu>();
+            ViewManager.OpenMainView();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace UI.View
+namespace UI.Menu
 {
     public class TouchArea : Text
     {

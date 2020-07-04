@@ -1,77 +1,52 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI.View
 {
-    // ToDo Refactoring
     public class ToggleSwitch : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField] private bool _isOn = false;
-        public bool isOn => _isOn;
-
-        [SerializeField] private RectTransform toggleIndicator;
-        [SerializeField] private Image backgroundImage;
-
-        [SerializeField] private Color onColor;
-        [SerializeField] private Color offColor;
-        [SerializeField] private float tweenTime = 0.25f;
+        [SerializeField] private RectTransform _indicator;
+        [SerializeField] private Image _background;
+        [SerializeField] private bool _value = false;
+        [SerializeField] private float _changDuration = 0.25f;
+        [SerializeField] private Color _onColor;
+        [SerializeField] private Color _offColor;
 
         private float _offX;
         private float _onX;
 
-        public delegate void ValueChanged(bool value);
-        public event ValueChanged valueChanged;
+        public bool Value => _value;
+        
+        public event Action<bool> Changed;
 
         private void Start()
         {
-            _offX = toggleIndicator.anchoredPosition.x;
-            Debug.Log(_offX);
+            _offX = _indicator.anchoredPosition.x;
             _onX = -_offX;
-            Debug.Log(_onX);
-            //audioSource = this.GetComponent<AudioSource>();
         }
 
-        public void OnEnable()
+        private void OnEnable()
         {
-            Toogle(isOn);
+            Toogle(_value);
         }
 
-        private void Toogle(bool value, bool playSFX = true)
+        private void Toogle(bool value)
         {
-            if (value != isOn)
-            {
-                _isOn = value;
-                ToggleColor(isOn);
-                MoveIndicator(isOn);
+            if (_value == value) 
+                return;
             
-                //if (playSFX)
-                //audioSource.Play();
-
-                valueChanged?.Invoke(isOn);
-            }
+            _value = value;
+            _background.DOColor(value ? _onColor : _offColor, _changDuration);
+            _indicator.DOAnchorPosX(value ? _onX : _offX, _changDuration);
+            Changed?.Invoke(value);
         }
-
-        private void ToggleColor(bool value)
-        {
-            if (value)
-                backgroundImage.DOColor(onColor, tweenTime);
-            else
-                backgroundImage.DOColor(offColor, tweenTime);
-        }
-    
-        private void MoveIndicator(bool value)
-        {
-            if (value)
-                toggleIndicator.DOAnchorPosX(_onX, tweenTime);
-            else
-                toggleIndicator.DOAnchorPosX(_offX, tweenTime);
-        }
-
+        
         public void OnPointerDown(PointerEventData eventData)
         {
-            Toogle(!isOn);
+            Toogle(!_value);
         }
     }
 }

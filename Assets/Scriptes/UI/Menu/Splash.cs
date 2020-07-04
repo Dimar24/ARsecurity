@@ -32,7 +32,7 @@ public class Splash : MonoBehaviour
                 .Join(LoadSceneLazy(id));
         
         loadPipeline
-            .Append(() => MenuManager.Open<MainMenu>())
+            .Append(ViewManager.OpenMainView)
             .Join(LoadQuestionsLazy())
             .Append(UnLoadSplashLazy())
             .Run();

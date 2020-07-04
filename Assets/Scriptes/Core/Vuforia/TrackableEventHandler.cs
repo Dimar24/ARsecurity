@@ -15,12 +15,6 @@ namespace Core.Vuforia
         public event Action<TrackableEventHandler> Found;
         public event Action<TrackableEventHandler> Lost;
 
-        private void OnEnable()
-        {
-            // TODO Create Manager 
-            GameManager.AddTrackableEventHandler(this);
-        }
-
 
         protected override void Start()
         {

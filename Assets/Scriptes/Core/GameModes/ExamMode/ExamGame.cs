@@ -9,8 +9,6 @@ namespace Core.GameModes.ExamMode
     {
         public event Action<QuestionData> NeedShowQuestion;
         public event Action NeedHideQuestion;
-        public event Action NeedShowParticles;
-        public event Action NeedHideParticles;
         
         private readonly IReadOnlyDictionary<int, QuestionData> _questions;
         private readonly Dictionary<int, ExamObjectState> _states = new Dictionary<int, ExamObjectState>();
@@ -29,8 +27,6 @@ namespace Core.GameModes.ExamMode
             {
                 var state = new ExamObjectState(_questions.ContainsKey(id));
                 var temp = id;
-                state.NeedShowParticles += () => OnNeedShowParticles(temp);
-                state.NeedHideParticles += () => OnNeedHideParticles(temp);
                 state.NeedShowQuestion += () => OnNeedShowQuestion(temp);
                 state.NeedHideQuestion += () => OnNeedHideQuestion(temp);
                 _states.Add(id, state);
@@ -82,16 +78,6 @@ namespace Core.GameModes.ExamMode
         private void OnNeedHideQuestion(int id)
         {
             NeedHideQuestion?.Invoke();
-        }
-        
-        private void OnNeedShowParticles(int id)
-        {
-            NeedShowParticles?.Invoke();
-        }
-        
-        private void OnNeedHideParticles(int id)
-        {
-            NeedHideParticles?.Invoke();
         }
     }
 }
