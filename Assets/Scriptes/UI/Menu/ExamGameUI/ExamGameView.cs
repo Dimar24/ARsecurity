@@ -1,8 +1,10 @@
-﻿using Core;
+﻿using System.Collections.Generic;
+using Core;
 using Core.GameModes.ExamMode;
 using Core.Scenes;
 using DG.Tweening;
 using Subsystem.Question;
+using UI.Menu.ExamGameCompleteUI;
 using UI.View;
 using UI.View.Answer;
 using UnityEngine;
@@ -50,11 +52,18 @@ namespace UI.Menu.ExamGameUI
             _game = options.Game;
             _game.NeedShowQuestion += OnNeedShowQuestion;
             _game.NeedHideQuestion += OnNeedHideQuestion;
-
+            _game.GameOvered += OnGameOvered;
+            
             _scene = options.Scene;
             base.OnOpenStart();
         }
-    
+
+        private void OnGameOvered(IReadOnlyCollection<(QuestionData, int)> result)
+        {
+            var options = new ExamGameCompleteViewOptions(result, _scene);
+            ViewManager.OpenExamGameCompleteView(options);
+        }
+
 
         private void UpdateQuestion(QuestionData question)
         {

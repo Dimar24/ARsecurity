@@ -1,4 +1,5 @@
-﻿using UI.View.Answer;
+﻿using Core.Scenes;
+using UI.View.Answer;
 using UI.View.QuestionResult;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ namespace UI.Menu.ExamGameCompleteUI
         [SerializeField] private AnswerViewOptions _incorrectOptions;
         [SerializeField] private string _titleFormat = "Правильных ответов: {0} из {1}";
 
+        private IGameScene _scene;
+        
         protected override void OnCreate()
         {
             _backButton.onClick.AddListener(OnBackButtonClicked);
@@ -25,24 +28,22 @@ namespace UI.Menu.ExamGameCompleteUI
         
         protected override void OnOpenStart(ExamGameCompleteViewOptions options)
         {
+            _scene = options.Scene;
             var results = options.Results;
             var correctAnswerCount = 0;
-            // ToDo удалить это
-            for (int ttt = 0; ttt < 2; ttt++)
+            
+            foreach (var (question, answerNumber) in results)
             {
-                foreach (var (question, answerNumber) in results)
-                {
-                    var resultViewOptions = new QuestionResultViewOptions(
-                        question.Answers, 
-                        answerNumber,
-                        _correctOptions, 
-                        _incorrectOptions);
-                
-                    var resultView = QuestionResultView.Create(resultViewOptions, _prefab);
-                    if (question.Answers[answerNumber].IsCorrect)
-                        ++correctAnswerCount;
-                    resultView.transform.SetParent(_listView.content);
-                }
+                var resultViewOptions = new QuestionResultViewOptions(
+                    question.Answers, 
+                    answerNumber,
+                    _correctOptions, 
+                    _incorrectOptions);
+            
+                var resultView = QuestionResultView.Create(resultViewOptions, _prefab);
+                if (question.Answers[answerNumber].IsCorrect)
+                    ++correctAnswerCount;
+                resultView.transform.SetParent(_listView.content);
             }
             
 
@@ -52,7 +53,10 @@ namespace UI.Menu.ExamGameCompleteUI
         
         private void OnBackButtonClicked()
         {
-            ViewManager.OpenMainView();
+            _scene.Unload(() =>
+            {
+                ViewManager.OpenModeView();
+            });
         }
     }
 }

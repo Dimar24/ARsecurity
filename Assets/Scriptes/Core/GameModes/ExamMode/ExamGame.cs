@@ -10,7 +10,9 @@ namespace Core.GameModes.ExamMode
     {
         public event Action<QuestionData> NeedShowQuestion;
         public event Action NeedHideQuestion;
-        
+
+        public event Action<IReadOnlyCollection<(QuestionData, int)>> GameOvered;
+
         private readonly IReadOnlyDictionary<int, QuestionData> _questions;
         private readonly Dictionary<int, ExamObjectState> _states = new Dictionary<int, ExamObjectState>();
 
@@ -73,15 +75,9 @@ namespace Core.GameModes.ExamMode
             _states[questionId].QuestionResolve();
 
             if (AnswersCount >= QuestionsCount)
-                GameOver();
+                GameOvered?.Invoke(_result);
         }
 
-        private void GameOver()
-        {
-            var options = new ExamGameCompleteViewOptions(_result);
-            ViewManager.OpenExamGameCompleteView(options);
-        }
-        
         private void OnNeedShowQuestion(int id)
         {
             NeedShowQuestion?.Invoke(_questions[id]);
