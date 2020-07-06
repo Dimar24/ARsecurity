@@ -3,7 +3,8 @@ using Core.GameModes.ExamMode;
 using Core.Scenes;
 using DG.Tweening;
 using Subsystem.Question;
-using UI.View.AnswerButton;
+using UI.View;
+using UI.View.Answer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,9 @@ namespace UI.Menu.ExamGameUI
         [SerializeField] private RectTransform _topPanel;
         [SerializeField] private RectTransform _bottomPanel;
         [SerializeField] private float _stateChangeDuration = 0.5f;
-        [SerializeField] private AnswerButtonOptions _defaultOptions;
-        [SerializeField] private AnswerButtonOptions _correctOptions;
-        [SerializeField] private AnswerButtonOptions _incorrectOptions;
+        [SerializeField] private AnswerViewOptions _defaultOptions;
+        [SerializeField] private AnswerViewOptions _correctOptions;
+        [SerializeField] private AnswerViewOptions _incorrectOptions;
 
         private ExamGame _game;
         private IGameScene _scene;
@@ -37,9 +38,9 @@ namespace UI.Menu.ExamGameUI
             _backButton.onClick.AddListener(OnBackButtonClicked);
             for (var i = 0; i < _buttons.Length; ++i)
             {
-                var button = _buttons[i];
+                var button = _buttons[i].Button;
                 var temp = i;
-                button.Clicked += () => OnButtonClicked(temp);
+                button.onClick.AddListener(() => OnButtonClicked(temp));
             }
             base.OnCreate();
         }
@@ -61,11 +62,11 @@ namespace UI.Menu.ExamGameUI
             _questionText.text = question.QuestionText;
             for (var i = 0; i < _buttons.Length; ++i)
             {
-                var button = _buttons[i];
-                button.AnswerText = question.Answers[i].Text;
-                button.NumberText = (i + 1).ToString();
-                button.SetColor(_defaultOptions.NumberColor, _defaultOptions.AnswerColor);
-                button.SetFrame(false);
+                var view = _buttons[i].View;
+                view.AnswerText = question.Answers[i].Text;
+                view.NumberText = (i + 1).ToString();
+                view.SetColor(_defaultOptions.NumberColor, _defaultOptions.AnswerColor);
+                view.SetFrame(false);
             }
             _isClicked = false;
         }
@@ -91,15 +92,25 @@ namespace UI.Menu.ExamGameUI
                 return;
         
             _isClicked = true;
-            _buttons[id].SetFrame(true);
-            _game.QuestionResolve(_questionData.Answers[id].IsCorrect);
+            _buttons[id].View.SetFrame(true);
+            _game.QuestionResolve(id);
             for (var i = 0; i < _buttons.Length; ++i)
             {
                 var button = _buttons[i];
+                Color number;
+                Color answer;
                 if (_questionData.Answers[i].IsCorrect)
-                    button.SetColor(_correctOptions.NumberColor, _correctOptions.AnswerColor);
+                {
+                    number = _correctOptions.NumberColor;
+                    answer = _correctOptions.AnswerColor;
+                }
                 else
-                    button.SetColor(_incorrectOptions.NumberColor, _incorrectOptions.AnswerColor);
+                {
+                    number = _incorrectOptions.NumberColor;
+                    answer = _incorrectOptions.AnswerColor;
+                }
+                
+                button.View.SetColor(number, answer);
             }
         }
     

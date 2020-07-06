@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI.Menu;
+using UI.Menu.ExamGameCompleteUI;
 using UI.Menu.ExamGameUI;
 using UI.Menu.TourGameUI;
 using UnityEngine;
@@ -36,6 +37,8 @@ public class ViewManager : MonoBehaviour
     public static void OpenTourGameView(TourGameViewOptions options, Action complete = null)
         => Open<TourGameView>(options, complete);
 
+    public static void OpenExamGameCompleteView(ExamGameCompleteViewOptions options, Action complete = null)
+        => Open<ExamGameCompleteView>(options, complete);
     
     // ToDo придумать систему без object
     private static void Open<T>(object param = null, Action complete = null) where T : BaseView

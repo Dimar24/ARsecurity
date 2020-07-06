@@ -52,7 +52,7 @@ namespace UI.Menu
                 .Append(OnOpenAnimation)
                 .Append(OnOpenComplete);
 
-        protected virtual void OnOpenStart(T param) { }
+        protected virtual void OnOpenStart(T options) { }
 
         protected sealed override void OnOpenStart() { }
     }

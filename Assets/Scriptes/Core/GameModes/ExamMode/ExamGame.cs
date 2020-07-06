@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Subsystem.Question;
+using UI.Menu.ExamGameCompleteUI;
 using UnityEngine;
 
 namespace Core.GameModes.ExamMode
@@ -13,10 +14,11 @@ namespace Core.GameModes.ExamMode
         private readonly IReadOnlyDictionary<int, QuestionData> _questions;
         private readonly Dictionary<int, ExamObjectState> _states = new Dictionary<int, ExamObjectState>();
 
+        private readonly List<(QuestionData, int)> _result = new List<(QuestionData, int)>();
         private int? _currentId;
-
+        
         public int QuestionsCount => _questions.Count;
-        public int AnswersCount { get; private set; }
+        public int AnswersCount => _result.Count;
         public int CorrectAnswersCount { get; private set; }
         public int IncorrectAnswersCount => AnswersCount - CorrectAnswersCount;
         
@@ -49,12 +51,11 @@ namespace Core.GameModes.ExamMode
             if (!_states.ContainsKey(id))
                 return;
 
-            _currentId = null;
             _states[id].OnObjectDefocus();
             base.OnObjectDefocus(id);
         }
 
-        public void QuestionResolve(bool isCorrect)
+        public void QuestionResolve(int answerNumber)
         {
             if (_currentId == null)
             {
@@ -63,11 +64,22 @@ namespace Core.GameModes.ExamMode
                 return;
             }
 
-            ++AnswersCount;
-            if (isCorrect)
+            var questionId = _currentId.Value;
+            var question = _questions[questionId];
+            _result.Add((question, answerNumber));
+            if (question.Answers[answerNumber].IsCorrect)
                 ++CorrectAnswersCount;
             
-            _states[_currentId.Value].QuestionResolve();
+            _states[questionId].QuestionResolve();
+
+            if (AnswersCount >= QuestionsCount)
+                GameOver();
+        }
+
+        private void GameOver()
+        {
+            var options = new ExamGameCompleteViewOptions(_result);
+            ViewManager.OpenExamGameCompleteView(options);
         }
         
         private void OnNeedShowQuestion(int id)
@@ -78,6 +90,7 @@ namespace Core.GameModes.ExamMode
         private void OnNeedHideQuestion(int id)
         {
             NeedHideQuestion?.Invoke();
+            _currentId = null;
         }
     }
 }

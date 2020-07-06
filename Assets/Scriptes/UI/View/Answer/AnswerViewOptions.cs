@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UI.View.AnswerButton
+namespace UI.View.Answer
 {
     [Serializable]
-    public struct AnswerButtonOptions
+    public struct AnswerViewOptions
     {
         [SerializeField] private Color _numberColor;
         [SerializeField] private Color _answerColor;

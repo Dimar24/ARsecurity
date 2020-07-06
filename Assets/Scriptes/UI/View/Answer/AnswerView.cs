@@ -1,21 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.View.AnswerButton
+namespace UI.View.Answer
 {
-    [RequireComponent(typeof(Button))]
-    public class AnswerButtonView : MonoBehaviour
+    public class AnswerView : MonoBehaviour
     {
         [SerializeField] private Text _numberText;
         [SerializeField] private Text _answerText;
-        private Button _button;
-    
         [SerializeField] private GameObject _answerFrameImage;
-    
         [SerializeField] private Image _numberImage;
         [SerializeField] private Image _answerImage;
     
+
         public string NumberText
         {
             get => _numberText.text;
@@ -28,22 +24,9 @@ namespace UI.View.AnswerButton
             set => _answerText.text = value;
         }
 
-        public event Action Clicked;
-    
-        private void Awake()
+        public void SetFrame(bool isActive)
         {
-            _button = GetComponent<Button>();
-            _button.onClick.AddListener(OnButtonClicked);
-        }
-
-        private void OnButtonClicked()
-        {
-            Clicked?.Invoke();
-        }
-
-        public void SetFrame(bool enabled)
-        {
-            _answerFrameImage.SetActive(enabled);
+            _answerFrameImage.SetActive(isActive);
         }
 
         public void SetColor(Color numberColor, Color answerColor)
@@ -51,7 +34,5 @@ namespace UI.View.AnswerButton
             _numberImage.color = numberColor;
             _answerImage.color = answerColor;
         }
-    
-    
     }
 }

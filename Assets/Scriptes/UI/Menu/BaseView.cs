@@ -13,7 +13,7 @@ namespace UI.Menu
         
         protected object ObjectParam { get; private set; }
         
-        protected void Awake()
+        protected void Start()
         {
             OnCreate();
         }
