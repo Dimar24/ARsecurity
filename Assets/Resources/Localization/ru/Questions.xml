@@ -1,18 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Questions>
-    <Question id="0" text="Question 1">
-        <Answer value="1">1 Correct Answer 1</Answer>
-        <Answer>1 Answer 2</Answer>
-        <Answer>1 Answer 3</Answer>
+    <Question id="0" text="Назовите причину, по которой произошло возгорание.">
+        <Answer>Некрасивое покрытие гладильной доски.</Answer>
+        <Answer value="1">Утюг забыли включенным на гладильной доске.</Answer>
+        <Answer>Слишком короткий провод на утюге.</Answer>
     </Question>
-    <Question id="1" text="Question 2">
-        <Answer>2 Answer 1</Answer>
-        <Answer>2 Answer 2</Answer>
-        <Answer value="1">2 Correct Answer 3</Answer>
+    <Question id="1" text="Выберите правильные действия.">
+        <Answer value="1">Отключить от сети, накрыть покрывалом.</Answer>
+        <Answer>Залить водой.</Answer>
+        <Answer>Сбросить телевизор на пол.</Answer>
     </Question>
-    <Question id="2" text="Question 3">
-        <Answer>3 Answer 1</Answer>
-        <Answer>3 Answer 2</Answer>
-        <Answer value="1">3 Correct Answer 3</Answer>
+    <Question id="2" text="Назовите причину, по которой произошло возгорание?">
+        <Answer>Провода разного цвета.</Answer>
+        <Answer>Провод слишком длинный.</Answer>
+        <Answer value="1">Используется поврежденный провод.</Answer>
+    </Question>
+    <Question id="3" text="Назовите причину, по которой произошло короткое замыкание и воспламенение розетки?">
+        <Answer>Из-за попадание прямых лучей солнца</Answer>
+        <Answer value="1">Розетка перегружена</Answer>
+        <Answer>Громко работал телевизор</Answer>
+    </Question>
+    <Question id="4" text="Назовите причину, по которой может произойти возгорание?">
+        <Answer>Камины плохо окрашен</Answer>
+        <Answer>В комнате сквозняк</Answer>
+        <Answer value="1">Трещина в дымоходе</Answer>
+    </Question>
+    <Question id="5" text="Что необходимо сделать, чтобы избежать пожара?">
+        <Answer>Курить на новом кресле</Answer>
+        <Answer value="1">Не курить в помещении</Answer>
+        <Answer>Курить при открытой форточке</Answer>
+    </Question>
+    <Question id="6" text="Назовите причину, по которой ребенку становится плохо.">
+        <Answer value="1">Ребенок взял лекарство без разрешения родителей</Answer>
+        <Answer>Лекарство оказалось не вкусным</Answer>
+        <Answer>У ребенка испортилось настроение</Answer>
+    </Question>
+    <Question id="7" text="Почему пожарный извещатель не реагирует на задымление?">
+        <Answer>В помещении мало света.</Answer>
+        <Answer>Извещатель реагирует только на открытый огонь.</Answer>
+        <Answer value="1">Пожарный извещатель не работает, так как в нем нет элемента питания.</Answer>
+    </Question>
+    <Question id="8" text="Назовите причину несчастного случая">
+        <Answer>Стол не правильной формы.</Answer>
+        <Answer value="1">Чашка находится на краю стола.</Answer>
+        <Answer>В комнате недостаточно света.</Answer>
+    </Question>
+    <Question id="9" text="Выберете средство тушения горящей сковороды">
+        <Answer>Вода.</Answer>
+        <Answer>Подсолнечное масло.</Answer>
+        <Answer value="1">Крышка, полотенце.</Answer>
+    </Question>
+    <Question id="10" text="Назовите причину, по которой произошел потоп.">
+        <Answer value="1">Кран плохо закрыт.</Answer>
+        <Answer>В кране перепутана горячая и холодная вода.</Answer>
+        <Answer>Слишком много посуды в раковине.</Answer>
+    </Question>
+    <Question id="11" text="Все ли в порядке с газовой колонкой?">
+        <Answer>С газовой колонкой все в порядке.</Answer>
+        <Answer>пламя слишком сильное, это очень опасно.</Answer>
+        <Answer value="1">красное пламя говорит о не полном сгорании газа, это очень опасно.</Answer>
+    </Question>
+    <Question id="12" text="Почему это опасно?">
+        <Answer value="1">Забита вытяжка приведет к скоплению угарного газа и смерти.</Answer>
+        <Answer>Ветки могут упасть вниз и намусорить в помещении.</Answer>
+        <Answer>В забитой мусором вытяжке , могут завестись тараканы.</Answer>
     </Question>
 </Questions>

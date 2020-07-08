@@ -7,8 +7,10 @@ namespace Subsystem.Question
     public static class QuestionManager
     {
         private static readonly string LocalizationPath = Path.Combine("Localization", "ru", "Questions");
-        private static readonly QuestionController _controller = new QuestionController();
+        private static readonly Dictionary<int, QuestionData> Questions = new Dictionary<int, QuestionData>();
 
+        public static IReadOnlyDictionary<int, QuestionData> ReadOnlyQuestions => Questions;
+        
         public static void LoadQuestionsAsync(Action complete = null)
         {
             new QuestionLoader(LocalizationPath)
@@ -18,13 +20,15 @@ namespace Subsystem.Question
                 complete?.Invoke();
             });
         }
-
-        public static QuestionData? GetQuestion(int id) => _controller.GetQuestion(id);
         
         private static void OnLoaded(List<QuestionLoadedData> data)
         {
+#if UNITY_EDITOR
+            // ToDo удалить тестовый костыль
+            data.RemoveRange(2, data.Count - 2);
+#endif
             foreach (var d in data)
-                _controller.AddQuestion(d.Id, d.Data);
+                Questions.Add(d.Id, d.Data);
         }
     }
 }
