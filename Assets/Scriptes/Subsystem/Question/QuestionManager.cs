@@ -25,7 +25,7 @@ namespace Subsystem.Question
         {
 #if UNITY_EDITOR
             // ToDo удалить тестовый костыль
-            data.RemoveRange(2, data.Count - 2);
+            //data.RemoveRange(2, data.Count - 2);
 #endif
             foreach (var d in data)
                 Questions.Add(d.Id, d.Data);
