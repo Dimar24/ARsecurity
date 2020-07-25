@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="gaz" size="1.000000 0.611151" />
+    <ImageTarget name="ROZ" size="1.000000 0.481250" />
+    <ImageTarget name="APTEK" size="1.000000 0.836656" />
+    <ImageTarget name="maxresdefault" size="1.000000 0.562500" />
     <ImageTarget name="object" size="1.000000 0.743610" />
-    <ImageTarget name="gaz2" size="1.000000 2.656757" />
     <ImageTarget name="project4" size="1.000000 1.333984" />
   </Tracking>
 </QCARConfig>
