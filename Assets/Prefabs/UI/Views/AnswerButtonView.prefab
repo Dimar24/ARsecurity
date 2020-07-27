@@ -135,6 +135,31 @@ PrefabInstance:
       propertyPath: m_FontData.m_VerticalOverflow
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 94311435498073446, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 94311435498073446, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94311435498073446, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 94311435498073446, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 94311435498073446, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4289649038584299716, guid: 35323c174863e544c9e6bca4e60b5ec1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -244,6 +269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AnswerView
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070840514654912068, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35323c174863e544c9e6bca4e60b5ec1, type: 3}
