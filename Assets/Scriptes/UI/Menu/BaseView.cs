@@ -24,7 +24,10 @@ namespace UI.Menu
         {
             ObjectParam = param;
             GetOpenLazySequence
-                .OnComplete(() => complete?.Invoke())
+                .OnComplete(() =>
+                {
+                    complete?.Invoke();
+                })
                 .Run();
         }
         

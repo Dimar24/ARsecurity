@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Core;
 using Core.GameModes.ExamMode;
 using Core.Scenes;
 using DG.Tweening;
@@ -15,6 +14,7 @@ namespace UI.Menu.ExamGameUI
     public class ExamGameView : View<ExamGameViewOptions>
     {
         [SerializeField] private Text _questionText;
+        [SerializeField] private Text _resultText;
         [SerializeField] private Button _backButton;
         [SerializeField] private AnswerButtonView[] _buttons;
         [SerializeField] private RectTransform _topPanel;
@@ -55,6 +55,9 @@ namespace UI.Menu.ExamGameUI
             _game.GameOvered += OnGameOvered;
             
             _scene = options.Scene;
+            
+            _resultText.text = $"{_game.AnswersCount}/{_game.QuestionsCount}";
+
             base.OnOpenStart();
         }
 
@@ -121,6 +124,8 @@ namespace UI.Menu.ExamGameUI
                 
                 button.View.SetColor(number, answer);
             }
+
+            _resultText.text = $"{_game.AnswersCount}/{_game.QuestionsCount}";
         }
     
         private void OnBackButtonClicked()

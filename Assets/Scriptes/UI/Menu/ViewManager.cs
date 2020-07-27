@@ -23,13 +23,13 @@ public class ViewManager : MonoBehaviour
 
     // ToDo перевести это в динамику
     public static void OpenMainView(Action complete = null)
-        => Open<MainView>(complete);
+        => Open<MainView>(complete: complete);
     
     public static void OpenModeView(Action complete = null)
-        => Open<ModeView>(complete);
+        => Open<ModeView>(complete: complete);
     
     public static void OpenExitView(Action complete = null)
-        => Open<ExitView>(complete);
+        => Open<ExitView>(complete:  complete);
     
     public static void OpenExamGameView(ExamGameViewOptions options, Action complete = null)
         => Open<ExamGameView>(options, complete);
