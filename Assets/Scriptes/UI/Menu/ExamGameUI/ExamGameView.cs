@@ -19,6 +19,7 @@ namespace UI.Menu.ExamGameUI
         [SerializeField] private AnswerButtonView[] _buttons;
         [SerializeField] private RectTransform _topPanel;
         [SerializeField] private RectTransform _bottomPanel;
+        [SerializeField] private RectTransform _counterTran;
         [SerializeField] private float _stateChangeDuration = 0.5f;
         [SerializeField] private AnswerViewOptions _defaultOptions;
         [SerializeField] private AnswerViewOptions _correctOptions;
@@ -29,6 +30,7 @@ namespace UI.Menu.ExamGameUI
         
         private float _topCloseY;
         private float _bottomCloseY;
+        private float _couterCloseY;
 
         private QuestionData _questionData;
         private bool _isClicked;
@@ -37,7 +39,9 @@ namespace UI.Menu.ExamGameUI
         {
             _topCloseY = _topPanel.anchoredPosition.y;
             _bottomCloseY = _bottomPanel.anchoredPosition.y;
+            _couterCloseY = _counterTran.anchoredPosition.y;
             _backButton.onClick.AddListener(OnBackButtonClicked);
+            
             for (var i = 0; i < _buttons.Length; ++i)
             {
                 var button = _buttons[i].Button;
@@ -57,7 +61,8 @@ namespace UI.Menu.ExamGameUI
             _scene = options.Scene;
             
             _resultText.text = $"{_game.AnswersCount}/{_game.QuestionsCount}";
-
+            _counterTran.DOAnchorPosY(0f, _stateChangeDuration);
+            
             base.OnOpenStart();
         }
 
@@ -85,17 +90,17 @@ namespace UI.Menu.ExamGameUI
 
         private void OnNeedShowQuestion(QuestionData question)
         {
-            Debug.Log("OnNeedShowQuestion UI");
             UpdateQuestion(question);
             _topPanel.DOAnchorPosY(0f, _stateChangeDuration);
             _bottomPanel.DOAnchorPosY(0f, _stateChangeDuration);
+            _counterTran.DOAnchorPosY(_couterCloseY, _stateChangeDuration);
         }
 
         private void OnNeedHideQuestion()
         {
-            Debug.Log("OnNeedHideQuestion UI");
             _topPanel.DOAnchorPosY(_topCloseY, _stateChangeDuration);
             _bottomPanel.DOAnchorPosY(_bottomCloseY, _stateChangeDuration);
+            _counterTran.DOAnchorPosY(0f, _stateChangeDuration);
         }
 
         private void OnButtonClicked(int id)

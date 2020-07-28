@@ -16,6 +16,7 @@ namespace Subsystem.Question
         private const string CorrectValue = "1";
 
         private readonly string _path;
+        
         public QuestionLoader(string path)
         {
             _path = path;
@@ -28,7 +29,6 @@ namespace Subsystem.Question
 
         private IEnumerator LoadRoutine(Action<List<QuestionLoadedData>> complete)
         {
-            
             var asyncOperation = Resources.LoadAsync(_path);
 
             while (!asyncOperation.isDone)

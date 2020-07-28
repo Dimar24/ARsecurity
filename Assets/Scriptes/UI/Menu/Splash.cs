@@ -33,11 +33,8 @@ public class Splash : MonoBehaviour
         
         loadPipeline
             .Append(ViewManager.OpenMainView)
-            .Append(() => Debug.Log("OPENMAINVIEW"))
             .Join(LoadQuestionsLazy())
-            .Append(() => Debug.Log("TEST"))
             .Append(UnLoadSplashLazy())
-            .Append(() => Debug.Log("END"))
             .Run();
     }
 
