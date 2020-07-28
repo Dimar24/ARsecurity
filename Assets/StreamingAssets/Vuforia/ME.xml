@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="ELC2" size="1.000000 0.907812" />
+    <ImageTarget name="elc" size="1.000000 0.564171" />
     <ImageTarget name="kry" size="1.000000 1.023135" />
     <ImageTarget name="apt" size="1.000000 0.841895" />
     <ImageTarget name="roz3" size="1.000000 1.004463" />
