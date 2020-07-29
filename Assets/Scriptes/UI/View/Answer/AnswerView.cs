@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.View.Answer
 {
     public class AnswerView : MonoBehaviour
     {
-        [SerializeField] private Text _numberText;
-        [SerializeField] private Text _answerText;
+        [SerializeField] private TMP_Text _numberText;
+        [SerializeField] private TMP_Text _answerText;
         [SerializeField] private GameObject _answerFrameImage;
         [SerializeField] private Image _numberImage;
         [SerializeField] private Image _answerImage;

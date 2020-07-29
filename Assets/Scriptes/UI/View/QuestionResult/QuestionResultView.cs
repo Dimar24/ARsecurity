@@ -30,7 +30,7 @@ namespace UI.View.QuestionResult
                 var view = _answerViews[i];
                 view.AnswerText = answer.Text;
                 view.SetFrame(i == answerNumber);
-                view.NumberText = i.ToString();
+                view.NumberText = (i + 1).ToString();
                 SetAnswerColor(view, answer.IsCorrect ? correctOptions : incorrectOptions);
                 ++i;
             }

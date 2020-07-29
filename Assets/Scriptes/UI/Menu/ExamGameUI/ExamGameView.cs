@@ -3,6 +3,7 @@ using Core.GameModes.ExamMode;
 using Core.Scenes;
 using DG.Tweening;
 using Subsystem.Question;
+using TMPro;
 using UI.Menu.ExamGameCompleteUI;
 using UI.View;
 using UI.View.Answer;
@@ -13,8 +14,8 @@ namespace UI.Menu.ExamGameUI
 {
     public class ExamGameView : View<ExamGameViewOptions>
     {
-        [SerializeField] private Text _questionText;
-        [SerializeField] private Text _resultText;
+        [SerializeField] private TMP_Text _questionText;
+        [SerializeField] private TMP_Text _resultText;
         [SerializeField] private Button _backButton;
         [SerializeField] private AnswerButtonView[] _buttons;
         [SerializeField] private RectTransform _topPanel;

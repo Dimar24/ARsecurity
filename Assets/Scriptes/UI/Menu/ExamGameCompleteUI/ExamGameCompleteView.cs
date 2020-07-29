@@ -1,4 +1,5 @@
 ﻿using Core.Scenes;
+using TMPro;
 using UI.View.Answer;
 using UI.View.QuestionResult;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace UI.Menu.ExamGameCompleteUI
         // ToDo ObjectPool
         [SerializeField] private QuestionResultView _prefab;
         [SerializeField] private Button _backButton;
-        [SerializeField] private Text _titleText;
+        [SerializeField] private TMP_Text _titleText;
         // ToDo Сделать класс с констатами
         [SerializeField] private AnswerViewOptions _correctOptions;
         [SerializeField] private AnswerViewOptions _incorrectOptions;
