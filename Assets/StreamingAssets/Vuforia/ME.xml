@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="gz" size="1.000000 0.617046" />
+    <ImageTarget name="tel" size="1.000000 0.587744" />
+    <ImageTarget name="pl" size="1.000000 0.620882" />
+    <ImageTarget name="logo" size="1.000000 0.329500" />
+    <ImageTarget name="apt2" size="1.000000 1.252503" />
     <ImageTarget name="ELC2" size="1.000000 0.907812" />
-    <ImageTarget name="elc" size="1.000000 0.564171" />
     <ImageTarget name="kry" size="1.000000 1.023135" />
     <ImageTarget name="apt" size="1.000000 0.841895" />
-    <ImageTarget name="roz3" size="1.000000 1.004463" />
-    <ImageTarget name="izv3" size="1.000000 1.004958" />
-    <ImageTarget name="izv2" size="1.000000 1.004314" />
-    <ImageTarget name="tel" size="1.000000 0.563380" />
     <ImageTarget name="soda" size="1.000000 1.703767" />
-    <ImageTarget name="izv" size="1.000000 0.983784" />
-    <ImageTarget name="ROZ" size="1.000000 0.898596" />
     <ImageTarget name="gaz" size="1.000000 0.611151" />
-    <ImageTarget name="APTEK" size="1.000000 0.836656" />
     <ImageTarget name="object" size="1.000000 0.743610" />
     <ImageTarget name="project4" size="1.000000 1.333984" />
   </Tracking>
