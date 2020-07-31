@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="rr" size="1.000000 0.500000" />
+    <ImageTarget name="ap" size="1.000000 0.862545" />
+    <ImageTarget name="pli" size="1.000000 1.067679" />
+    <ImageTarget name="ra2" size="1.000000 0.800000" />
+    <ImageTarget name="ra1" size="1.000000 0.760780" />
+    <ImageTarget name="1" size="1.000000 1.884984" />
+    <ImageTarget name="logo2" size="1.000000 0.750000" />
     <ImageTarget name="gz" size="1.000000 0.617046" />
-    <ImageTarget name="tel" size="1.000000 0.587744" />
     <ImageTarget name="pl" size="1.000000 0.620882" />
     <ImageTarget name="logo" size="1.000000 0.329500" />
     <ImageTarget name="apt2" size="1.000000 1.252503" />
     <ImageTarget name="ELC2" size="1.000000 0.907812" />
     <ImageTarget name="kry" size="1.000000 1.023135" />
-    <ImageTarget name="apt" size="1.000000 0.841895" />
     <ImageTarget name="soda" size="1.000000 1.703767" />
     <ImageTarget name="gaz" size="1.000000 0.611151" />
     <ImageTarget name="object" size="1.000000 0.743610" />
