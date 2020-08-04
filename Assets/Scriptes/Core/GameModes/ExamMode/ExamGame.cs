@@ -74,8 +74,13 @@ namespace Core.GameModes.ExamMode
             
             _states[questionId].QuestionResolve();
 
-            if (AnswersCount >= QuestionsCount)
-                GameOvered?.Invoke(_result);
+            //if (AnswersCount >= QuestionsCount)
+            var test = new List<(QuestionData, int)>();
+            foreach (var q in _questions)
+            {
+                test.Add((q.Value, 1));
+            }
+            GameOvered?.Invoke(test);
         }
 
         private void OnNeedShowQuestion(int id)
