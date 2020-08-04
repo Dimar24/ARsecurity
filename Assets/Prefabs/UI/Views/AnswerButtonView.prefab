@@ -275,6 +275,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6617768165215464930, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617768165215464930, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617768165215464930, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536598709094347877, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536598709094347877, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536598709094347877, guid: 35323c174863e544c9e6bca4e60b5ec1,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 26
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35323c174863e544c9e6bca4e60b5ec1, type: 3}
 --- !u!224 &37978809236809561 stripped
