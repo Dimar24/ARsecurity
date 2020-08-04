@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.GameModes.ExamMode;
 using Core.Scenes;
 using DG.Tweening;
@@ -35,25 +36,31 @@ namespace UI.Menu.ExamGameUI
 
         private QuestionData _questionData;
         private bool _isClicked;
-        
+        private bool isCreate;
+
         protected override void OnCreate()
         {
-            _topCloseY = _topPanel.anchoredPosition.y;
-            _bottomCloseY = _bottomPanel.anchoredPosition.y;
-            _couterCloseY = _counterTran.anchoredPosition.y;
-            _backButton.onClick.AddListener(OnBackButtonClicked);
-            
+            isCreate = true;
             for (var i = 0; i < _buttons.Length; ++i)
             {
                 var button = _buttons[i].Button;
                 var temp = i;
                 button.onClick.AddListener(() => OnButtonClicked(temp));
             }
+            
+            _backButton.onClick.AddListener(OnBackButtonClicked);
             base.OnCreate();
         }
 
         protected override void OnOpenStart(ExamGameViewOptions options)
         {
+            if (!isCreate)
+            {
+                isCreate = true;
+                _topCloseY = _topPanel.anchoredPosition.y;
+                _bottomCloseY = _bottomPanel.anchoredPosition.y;
+                _couterCloseY = _counterTran.anchoredPosition.y;
+            }
             _game = options.Game;
             _game.NeedShowQuestion += OnNeedShowQuestion;
             _game.NeedHideQuestion += OnNeedHideQuestion;
@@ -64,10 +71,14 @@ namespace UI.Menu.ExamGameUI
             _resultText.text = $"{_game.AnswersCount}/{_game.QuestionsCount}";
             _counterTran.DOAnchorPosY(0f, _stateChangeDuration);
             
+            _topPanel.DOAnchorPosY(_topCloseY, 0);
+            _bottomPanel.DOAnchorPosY(_bottomCloseY, 0);
+            _counterTran.DOAnchorPosY(0f, 0);
+            
             base.OnOpenStart();
         }
 
-        private void OnGameOvered(IReadOnlyCollection<(QuestionData, int)> result)
+        private void OnGameOvered(IReadOnlyCollection<(QuestionData, int, int)> result)
         {
             var options = new ExamGameCompleteViewOptions(result, _scene);
             ViewManager.OpenExamGameCompleteView(options);

@@ -11,12 +11,12 @@ namespace Core.GameModes.ExamMode
         public event Action<QuestionData> NeedShowQuestion;
         public event Action NeedHideQuestion;
 
-        public event Action<IReadOnlyCollection<(QuestionData, int)>> GameOvered;
+        public event Action<IReadOnlyCollection<(QuestionData, int, int)>> GameOvered;
 
         private readonly IReadOnlyDictionary<int, QuestionData> _questions;
         private readonly Dictionary<int, ExamObjectState> _states = new Dictionary<int, ExamObjectState>();
 
-        private readonly List<(QuestionData, int)> _result = new List<(QuestionData, int)>();
+        private readonly List<(QuestionData, int, int)> _result = new List<(QuestionData, int, int)>();
         private int? _currentId;
         
         public int QuestionsCount => _questions.Count;
@@ -68,17 +68,19 @@ namespace Core.GameModes.ExamMode
 
             var questionId = _currentId.Value;
             var question = _questions[questionId];
-            _result.Add((question, answerNumber));
+            _result.Add((question, answerNumber, questionId));
             if (question.Answers[answerNumber].IsCorrect)
                 ++CorrectAnswersCount;
             
             _states[questionId].QuestionResolve();
 
             //if (AnswersCount >= QuestionsCount)
-            var test = new List<(QuestionData, int)>();
+            var test = new List<(QuestionData, int, int)>();
+            var i = 0;
             foreach (var q in _questions)
             {
-                test.Add((q.Value, 1));
+                test.Add((q.Value, 1, i));
+                ++i;
             }
             GameOvered?.Invoke(test);
         }

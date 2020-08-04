@@ -13,6 +13,8 @@ namespace UI.Menu
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _backButton;
         [SerializeField] private ToggleSwitch _toggle;
+
+        private bool _isClicked;
         
         protected override void OnCreate()
         {
@@ -21,13 +23,24 @@ namespace UI.Menu
             base.OnCreate();
         }
 
+        protected override void OnOpenStart()
+        {
+            _isClicked = false;
+            base.OnOpenStart();
+        }
+        
         private void OnPlayButtonClicked()
         {
+            if (_isClicked)
+                return;
+            _isClicked = true;
+            
             if (_toggle.Value)
                 OpenTourGame();
             else
                 OpenExamGame();
         }
+        
         private void OpenExamGame()
         {
             var game = GameBuilder.CreateExamGame();

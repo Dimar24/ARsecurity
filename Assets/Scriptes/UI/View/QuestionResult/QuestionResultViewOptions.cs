@@ -6,15 +6,21 @@ namespace UI.View.QuestionResult
 {
     public class QuestionResultViewOptions
     {
-        public readonly IReadOnlyCollection<AnswerData> Answers;
+        public readonly QuestionData QuestionData;
+        public readonly int QuestionNumber;
         public readonly int AnswerNumber;
         public readonly AnswerViewOptions CorrectOptions;
         public readonly AnswerViewOptions IncorrectOptions;
 
-        public QuestionResultViewOptions(IReadOnlyCollection<AnswerData> answers, int answerNumber,
-            in AnswerViewOptions correctOptions, in AnswerViewOptions incorrectOptions)
+        public QuestionResultViewOptions(
+            in QuestionData questionData, 
+            int questionNumber, 
+            int answerNumber,
+            in AnswerViewOptions correctOptions, 
+            in AnswerViewOptions incorrectOptions)
         {
-            Answers = answers;
+            QuestionData = questionData;
+            QuestionNumber = questionNumber;
             AnswerNumber = answerNumber;
             CorrectOptions = correctOptions;
             IncorrectOptions = incorrectOptions;

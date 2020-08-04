@@ -33,10 +33,11 @@ namespace UI.Menu.ExamGameCompleteUI
             var results = options.Results;
             var correctAnswerCount = 0;
             
-            foreach (var (question, answerNumber) in results)
+            foreach (var (question, answerNumber, questionNumber) in results)
             {
                 var resultViewOptions = new QuestionResultViewOptions(
-                    question.Answers, 
+                    question, 
+                    questionNumber,
                     answerNumber,
                     _correctOptions, 
                     _incorrectOptions);
@@ -45,6 +46,7 @@ namespace UI.Menu.ExamGameCompleteUI
                 if (question.Answers[answerNumber].IsCorrect)
                     ++correctAnswerCount;
                 resultView.transform.SetParent(_listView.content);
+                resultView.transform.localScale = Vector3.one;
             }
             
 

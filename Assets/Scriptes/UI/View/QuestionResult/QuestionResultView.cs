@@ -1,10 +1,12 @@
-﻿using UI.View.Answer;
+﻿using TMPro;
+using UI.View.Answer;
 using UnityEngine;
 
 namespace UI.View.QuestionResult
 {
     public class QuestionResultView : MonoBehaviour
     {
+        [SerializeField] private TMP_Text questionText;
         [Tooltip("Must be 3")]
         [SerializeField] private AnswerView[] _answerViews;
         
@@ -19,11 +21,12 @@ namespace UI.View.QuestionResult
 
         private void SetData(QuestionResultViewOptions options)
         {
-            var answers = options.Answers;
+            var answers = options.QuestionData.Answers;
             var answerNumber = options.AnswerNumber;
             var correctOptions = options.CorrectOptions;
             var incorrectOptions = options.IncorrectOptions;
-            
+
+            questionText.text = $"{options.QuestionNumber + 1} {options.QuestionData.QuestionText}";
             var i = 0;
             foreach (var answer in answers)
             {

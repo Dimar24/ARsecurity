@@ -130,12 +130,12 @@ PrefabInstance:
     - target: {fileID: 4511364191534432451, guid: 5326bc15ecb6fc24b8ec326d9910bf3a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4511364191534432451, guid: 5326bc15ecb6fc24b8ec326d9910bf3a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4511364191534432451, guid: 5326bc15ecb6fc24b8ec326d9910bf3a,
         type: 3}
@@ -171,7 +171,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1324128684258313121}
+      objectReference: {fileID: 3267329696293919657}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5326bc15ecb6fc24b8ec326d9910bf3a, type: 3}
 --- !u!224 &6238955553001744515 stripped
@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1324128684258313121 stripped
+--- !u!114 &3267329696293919657 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8822249117705186273, guid: 5326bc15ecb6fc24b8ec326d9910bf3a,
+  m_CorrespondingSourceObject: {fileID: 4997113073985811433, guid: 5326bc15ecb6fc24b8ec326d9910bf3a,
     type: 3}
   m_PrefabInstance: {fileID: 7498120444790007872}
   m_PrefabAsset: {fileID: 0}
