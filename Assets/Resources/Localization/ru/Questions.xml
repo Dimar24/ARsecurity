@@ -60,4 +60,9 @@
         <Answer>Газ пропал</Answer>
         <Answer value="1">Газоваый счётчик неисправен, газ выходит наружу</Answer>
     </Question>
+    <Question id="12" text="Какие требуется выполнить действия, для предотвращения опасности">
+        <Answer>Заварить чаю</Answer>
+        <Answer>Открыть ребенка и выпустить</Answer>
+        <Answer value="1">Закрыть окно, забрать ребенка</Answer>
+    </Question>
 </Questions>
