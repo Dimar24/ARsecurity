@@ -7780,7 +7780,7 @@ MonoBehaviour:
   mAspectRatio: 0.625
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 0.617046
+  mHeight: 0.625
 --- !u!114 &858891757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15963,7 +15963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129534583}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: -1.167}
   m_LocalScale: {x: 1, y: 1, z: 0.010000001}
   m_Children: []
   m_Father: {fileID: 1194983772}
@@ -15977,7 +15977,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129534583}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 171e6196828cd5045a190e26ee83f5f0, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 7d49c2d3a1c1b3a41b87f5765d403418, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
